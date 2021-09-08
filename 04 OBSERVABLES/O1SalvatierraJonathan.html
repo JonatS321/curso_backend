@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.6.3/rxjs.umd.min.js"></script>
+    </head>
+    <body>
+        <input type="text" id="textoAEspejar" />
+        <label id="espejo"> ESPEJO </label>
+        <script>
+            const { fromEvent, Observable } = rxjs;
+
+            function espejarInput() {
+                let elementoInput = document.getElementById("textoAEspejar");
+                let eventoInput = fromEvent(elementoInput, "input");
+                return new Observable((observer) => {
+                    let textoAEspejar =
+                        document.getElementById("textoAEspejar").value;
+                    console.log("ADENTRO DEL OBSEVABLE");
+                    const intervalId = setInterval(() => {
+                        textoAEspejar;
+                        if (textoAEspejar == "complete") {
+                            observer.complete();
+                        } else if (textoAEspejar === "error") {
+                            observer.error();
+                        }
+                        console.log(textoAEspejar);
+                        console.log(
+                            (document.getElementById("espejo").innerHTML =
+                                textoAEspejar.split("").reverse().join(""))
+                        );
+                        //document.getElementById("espejo").innerHTML = textoAEspejar.split("").reverse().join("");
+                        observer.next(textoAEspejar);
+                    }, 1000);
+
+                    return () => {
+                        console.log("OBSERVABLE TERMINADO POR RETURN");
+                        clearInterval(intervalId);
+                    };
+                });
+            }
+
+            // const dataEnInput = fromEvent(
+            //     document.getElementById("textoAEspejar"),
+            //     "input"
+            // );
+
+            const observer = {
+                next: (inputActual) => console.log(inputActual),
+                error: (error) => console.log(error),
+                complete: () => {
+                    console.log("Operable completo");
+                },
+            };
+
+            //const inputConPipe = dataEnInput.pipe();
+
+            const inputSubscribido = espejarInput().subscribe(observer);
+
+            //setTimeout(inputSubscribido.unsubscribe(),30000)
+        </script>
+    </body>
+</html>
+<div>
+    --Realizar un documento web que contenga un elemento input y que a medida de
+    que escribo, se vaya mostrando a su derecha el texto en forma espejada.
+    Utilizar un Observable para realizar esa función. --Este comportamiento
+    estará disponible por 30 segundos. Luego de ese tiempo, se realizará la
+    desuscripción automática. --Si en el lapso de tiempo activo se escribe
+    ‘error’, el Observable terminará por error. Si se ingresa ‘complete’, el
+    Observable terminará en forma normal. Indicar por la consola la razón del
+    cierre de la función. --Una vez que el Observable no esté más operativo,
+    desregistrar el evento de entrada, deshabilitar la escritura en el input y
+    borrar el resultado de la operación.
+</div>

@@ -1,0 +1,74 @@
+[
+    {
+        "title": "PERRO",
+        "price": 1,
+        "thumbnail": "URL FOTO DE PERRO",
+        "id": 1
+    },
+    {
+        "title": "PERRO",
+        "price": 1,
+        "thumbnail": "URL FOTO DE PERRO",
+        "id": 2
+    },
+    {
+        "title": "PERRO",
+        "price": 1,
+        "thumbnail": "URL FOTO DE PERRO",
+        "id": 3
+    },
+    {
+        "title": "PERRO",
+        "price": 1,
+        "thumbnail": "URL FOTO DE PERRO",
+        "id": 4
+    },
+    {
+        "title": "PERRO",
+        "price": 1,
+        "thumbnail": "URL FOTO DE PERRO",
+        "id": 5
+    },
+    {
+        "title": "PERRO",
+        "price": 1,
+        "thumbnail": "URL FOTO DE PERRO",
+        "id": 6
+    },
+    {
+        "title": "PERRO",
+        "price": 1,
+        "thumbnail": "URL FOTO DE PERRO",
+        "id": 7
+    },
+    {
+        "title": "PERRO",
+        "price": 1,
+        "thumbnail": "URL FOTO DE PERRO",
+        "id": 8
+    },
+    {
+        "title": "PERRO",
+        "price": 1,
+        "thumbnail": "URL FOTO DE PERRO",
+        "id": 9
+    },
+    {
+        "title": "MESA",
+        "price": 1000,
+        "thumbnail": "URL FOTO MESA",
+        "id": 10
+    },
+    {
+        "title": "MESA",
+        "price": 1000,
+        "thumbnail": "URL FOTO MESA",
+        "id": 11
+    },
+    {
+        "title": "TV",
+        "price": 520,
+        "thumbnail": "URL DE LA FOTO DE LA TV",
+        "id": 12
+    }
+]

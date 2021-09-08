@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <input type="text" id="textoAEspejar" />
+        <label id="espejo"> ESPEJO </label>
+
+        <script>
+            import { Observable } from "rxjs";
+
+
+            function contarPushMultiple(tiempo) {
+                let contadorPushMultiple = 0;
+                return new Observable((observer) => {
+                    const intervalId = setInterval(() => {
+                        contadorPushMultiple++;
+                        if (contadorPushMultiple === 4) {
+                            observer.complete();
+                            // suscriber.error("Error contador Observable");
+                        }
+
+                        observer.next(contadorPushMultiple);
+                    }, tiempo);
+
+                    return () => {
+                        console.log("Fin contador por return");
+                        clearInterval(intervalId);
+                    };
+                });
+            }
+
+            const observer = {
+                next: (contador) => console.log(contador),
+                error: (error) => console.log(error),
+                complete: () => console.log("Fin contador por complete"),
+            };
+
+            let suscriptor = contarPushMultiple(1000).subscribe(observer);
+
+            setTimeout(() => {
+                suscriptor.unsubscribe();
+            }, 10000);
+        </script>
+    </body>
+</html>
+
+<!-- >> Consigna 2: Realizar lo mismo pedido en la Consigna 1 pero en lugar de
+manejar la conversión de datos dentro del Observable, hacerlo utilizando el
+método pipe y operadores rxjs (a elección). -->
