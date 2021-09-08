@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>FUNCION CONSTRUCTORA</h1>
+        <script>
+            function Usuario(nombre, apellido, libros, mascotas) {
+                this.nombre = nombre;
+                this.apellido = apellido;
+                this.libros = libros;
+                this.mascotas = mascotas;
+            }
+
+            Usuario.prototype.getFullName = function () {
+                return `${this.nombre} ${this.apellido}`;
+            };
+
+            Usuario.prototype.addMascota = function (nombre_mascota) {
+                this.mascotas.push(nombre_mascota);
+            };
+
+            Usuario.prototype.getMascotas = function () {
+                return this.mascotas.length;
+            };
+
+            Usuario.prototype.addBook = function (book, autor) {
+                this.libros.push({ nombre: book, autor: autor });
+            };
+
+            Usuario.prototype.getBooks = function () {
+                return this.libros.map((libro) => libro.nombre);
+            };
+
+            let pepe = new Usuario("Juan", "Perez", [], ["Perro", "Gato"]);
+            console.log(pepe.getFullName());
+            pepe.addMascota("ZORRILLO");
+            console.log(pepe.getMascotas());
+            pepe.addBook("RELATO DE UN NAUFRAGO", "GABRIEL GARCIA MARQUEZ");
+            console.log(pepe.getBooks());
+        </script>
+    </body>
+</html>
