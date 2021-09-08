@@ -1,0 +1,25 @@
+<h1>Vista de productos </h1>
+{{#if noHayProductos}}
+<h2>No se encontraron productos</h2>
+{{/if}}
+{{#if hayProductos}}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Foto</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each listaDeProductos}}
+        <tr>
+
+            <th scope="row">{{this.titulo}}</th>
+            <td>{{this.precio}}</td>
+            <td><img src={{this.thumbnail}} alt="IMAGEN DEL PRODUCTO"></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{/if}}
